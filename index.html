@@ -168,7 +168,7 @@
     font-size: .85rem;
     letter-spacing: .4em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--white);
     margin-bottom: 1.5rem;
     opacity: 0;
     animation: fadeUp .8s .3s forwards;
@@ -191,7 +191,7 @@
     font-size: clamp(1rem, 2.5vw, 1.4rem);
     letter-spacing: .2em;
     text-transform: uppercase;
-    color: var(--grey);
+    color: var(--white);
     margin-top: 1.2rem;
     opacity: 0;
     animation: fadeUp .8s .7s forwards;
@@ -217,7 +217,7 @@
     font-size: .7rem;
     letter-spacing: .4em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--gold);
     margin-bottom: .8rem;
   }
   .matchup-fighters {
@@ -232,29 +232,15 @@
   }
   .matchup-name {
     font-family: var(--font-display);
-    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
     letter-spacing: .04em;
     line-height: 1;
   }
-  .matchup-record {
-    font-family: var(--font-body);
-    font-weight: 300;
-    font-size: .9rem;
-    color: var(--gold);
-    margin-top: .2rem;
-  }
-  .matchup-nickname {
-    font-family: var(--font-heading);
-    font-weight: 300;
-    font-size: .75rem;
-    letter-spacing: .15em;
-    color: var(--grey);
-    text-transform: uppercase;
-  }
   .matchup-vs {
     font-family: var(--font-display);
-    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-size: clamp(1.8rem, 4vw, 3rem);
     color: var(--red);
+    align-self: center;
   }
 
   .hero-event-details {
@@ -268,8 +254,38 @@
     animation: fadeUp .8s 1.2s forwards;
   }
   .hero-event-details strong {
+    color: var(--white);
+    font-weight: 700;
+  }
+  .hero-event-date {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+    letter-spacing: .06em;
+    color: var(--white);
+    margin-top: 1.2rem;
+    opacity: 0;
+    animation: fadeUp .8s 1.2s forwards;
+  }
+  .hero-event-address {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.05rem;
     color: var(--gold);
-    font-weight: 600;
+    letter-spacing: .05em;
+    margin-top: .3rem;
+    opacity: 0;
+    animation: fadeUp .8s 1.3s forwards;
+  }
+  .hero-event-doors {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: .95rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-top: .4rem;
+    opacity: 0;
+    animation: fadeUp .8s 1.35s forwards;
   }
 
   .hero-buttons {
@@ -293,7 +309,6 @@
     border: none;
     cursor: pointer;
     text-decoration: none;
-    clip-path: polygon(0 0,100% 0,96% 100%,0% 100%);
     transition: transform .2s, background .2s;
   }
   .btn-primary:hover { transform: scale(1.03); background: #b51424; }
@@ -306,13 +321,13 @@
     text-transform: uppercase;
     padding: .9rem 2.4rem;
     background: transparent;
-    color: var(--white);
-    border: 1px solid var(--grey-dim);
+    color: var(--gold);
+    border: 1px solid var(--gold);
     cursor: pointer;
     text-decoration: none;
-    transition: border-color .25s, color .25s;
+    transition: background .25s, color .25s;
   }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+  .btn-outline:hover { background: var(--gold); color: var(--black); }
 
   /* ─── COUNTDOWN ─── */
   .countdown-row {
@@ -340,7 +355,7 @@
     font-size: .6rem;
     letter-spacing: .25em;
     text-transform: uppercase;
-    color: var(--grey-dim);
+    color: var(--gold);
     margin-top: .25rem;
   }
 
@@ -858,7 +873,7 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <p class="hero-tag">Detroit's Premier Boxing Promoter</p>
+    <p class="hero-tag">Detroit's Premier Boxing Promotion</p>
 
     <!-- LOGO: Upload DSP_Logo.svg to your GitHub repo -->
     <img src="DSP_Logo.svg" alt="Darkside Promotions" class="hero-logo">
@@ -867,23 +882,21 @@
     <div class="hero-divider"></div>
 
     <div class="hero-matchup">
-      <p class="matchup-label">Main Event</p>
+      <p class="matchup-label">Coming Up Next</p>
       <div class="matchup-fighters">
         <div class="matchup-fighter">
-          <p class="matchup-nickname">"Lionheart"</p>
           <p class="matchup-name">MASHHADI</p>
-          <p class="matchup-record">14-1-0 &bull; 12 KOs</p>
         </div>
         <div class="matchup-vs">VS</div>
         <div class="matchup-fighter">
-          <p class="matchup-nickname">&nbsp;</p>
           <p class="matchup-name">GARCIA</p>
-          <p class="matchup-record">20-4-1 &bull; 13 KOs</p>
         </div>
       </div>
     </div>
 
-    <p class="hero-event-details"><strong>Saturday, April 25, 2026</strong> &mdash; Redford Theatre &mdash; Doors at 6:00 PM<br>17360 Lahser Rd, Detroit, MI 48219</p>
+    <p class="hero-event-date">SATURDAY, APRIL 25</p>
+    <p class="hero-event-address">Redford Theatre — 17360 Lahser Rd, Detroit, MI 48219</p>
+    <p class="hero-event-doors">Doors Open at 6:00 PM</p>
 
     <div class="countdown-row" id="countdown">
       <div class="countdown-unit">
