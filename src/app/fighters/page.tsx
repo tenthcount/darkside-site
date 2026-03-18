@@ -17,7 +17,7 @@ export default async function FightersPage() {
     <main className="min-h-screen pt-32 pb-24 px-8 bg-[#0a0a0a]">
       <div className="max-w-[1200px] mx-auto">
         <Reveal><p className="section-tag">The Roster</p></Reveal>
-        <Reveal><h2 className="section-title">OUR FIGHTERS</h2></Reveal>
+        <Reveal><h2 className="section-title">FEATURED FIGHTERS</h2></Reveal>
         <Reveal><div className="section-divider" /></Reveal>
 
         {fighters && fighters.length > 0 ? (
