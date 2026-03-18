@@ -304,6 +304,21 @@ export default async function HomePage() {
                 <p className="font-light text-[1rem] text-[#888] mb-4 leading-[1.7]">
                   Whether you&apos;re a fighter looking for a platform, a sponsor seeking exposure, or a fan who wants ringside — we want to hear from you.
                 </p>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="card w-9 h-9 flex items-center justify-center text-[.9rem] shrink-0">📍</div>
+                  <div className="font-light text-[.95rem] text-[#888]">
+                    <strong className="block text-[#f0ece4] font-heading font-bold text-[.75rem] tracking-[.15em] uppercase mb-0.5">Location</strong>
+                    {settings?.contactLocation || 'Dearborn Heights, MI — Metro Detroit'}
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="card w-9 h-9 flex items-center justify-center text-[.9rem] shrink-0">📧</div>
+                  <div className="font-light text-[.95rem] text-[#888]">
+                    <strong className="block text-[#f0ece4] font-heading font-bold text-[.75rem] tracking-[.15em] uppercase mb-0.5">Email</strong>
+                    {settings?.contactEmail || 'info@darksidepromos.com'}
+                  </div>
+                </div>
+
                 <div className="flex gap-4 mt-6">
                   {settings?.socialInstagram && (
                     <a href={settings.socialInstagram} target="_blank" rel="noopener noreferrer" className="card w-[42px] h-[42px] flex items-center justify-center text-[#888] hover:border-[#d4182a] hover:text-[#d4182a] transition-colors" title="Instagram">
@@ -325,19 +340,6 @@ export default async function HomePage() {
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     </a>
                   )}
-                </div>
-                </div>
-                <div className="flex gap-5 mt-6">
-                  {[
-                    { label: 'IG', url: settings?.socialInstagram || 'https://www.instagram.com/darkside_promotions/' },
-                    { label: 'FB', url: settings?.socialFacebook || 'https://www.facebook.com/officialdarksidepromos/' },
-                    { label: 'YT', url: settings?.socialYoutube || '#' },
-                    { label: 'X', url: settings?.socialX || '#' },
-                  ].map((social) => (
-                    <a key={social.label} href={social.url} target="_blank" rel="noopener noreferrer" className="card w-[42px] h-[42px] flex items-center justify-center font-heading font-bold text-[.65rem] tracking-[.05em] text-[#888] hover:border-[#d4182a] hover:text-[#d4182a] transition-colors">
-                      {social.label}
-                    </a>
-                  ))}
                 </div>
               </div>
               <ContactForm />
