@@ -118,49 +118,49 @@
   /* ─── HERO ─── */
   .hero {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 0 2rem 3rem;
+    padding: 6rem 2rem 4rem;
     overflow: hidden;
   }
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-  .hero-bg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center;
-  }
-  /* Show wide banner on desktop, portrait flyer on mobile */
-  .hero-bg .hero-img-mobile { display: none; }
-  .hero-bg .hero-img-desktop { display: block; }
-
-  @media (max-width: 768px) {
-    .hero-bg .hero-img-desktop { display: none; }
-    .hero-bg .hero-img-mobile {
-      display: block;
-      object-position: top center;
-    }
-    .hero { padding: 0 1.2rem 2rem; }
-  }
-  /* Dark gradient at bottom so text is legible over flyer */
-  .hero-bg::after {
+  .hero::before {
     content: '';
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0) 40%, rgba(10,10,10,.7) 65%, rgba(10,10,10,.95) 100%);
-    z-index: 1;
+      radial-gradient(ellipse 60% 50% at 50% 40%, var(--red-glow) 0%, transparent 70%),
+      radial-gradient(circle at 20% 80%, rgba(201,168,76,.08) 0%, transparent 50%),
+      linear-gradient(180deg, var(--black) 0%, #0d0d0d 100%);
+    z-index: 0;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; right: -10%; bottom: 0;
+    width: 50%;
+    background: repeating-linear-gradient(
+      -55deg,
+      transparent,
+      transparent 60px,
+      rgba(212,24,42,.04) 60px,
+      rgba(212,24,42,.04) 62px
+    );
+    z-index: 0;
   }
 
-  .hero-content { position: relative; z-index: 2; max-width: 900px; }
+  .hero-content { position: relative; z-index: 1; max-width: 900px; }
+
+  .hero-logo {
+    width: clamp(280px, 55vw, 600px);
+    height: auto;
+    margin: 0 auto 1.5rem;
+    opacity: 0;
+    animation: fadeUp .8s .4s forwards;
+  }
 
   .hero-tag {
     font-family: var(--font-heading);
@@ -276,8 +276,9 @@
     display: flex;
     gap: 1rem;
     justify-content: center;
+    margin-top: 2.5rem;
     opacity: 0;
-    animation: fadeUp .8s .5s forwards;
+    animation: fadeUp .8s 1.7s forwards;
   }
 
   .btn-primary {
@@ -318,9 +319,9 @@
     display: flex;
     gap: 1.5rem;
     justify-content: center;
-    margin-bottom: 1.2rem;
+    margin-top: 2rem;
     opacity: 0;
-    animation: fadeUp .8s .3s forwards;
+    animation: fadeUp .8s 1.5s forwards;
   }
   .countdown-unit {
     display: flex;
@@ -839,7 +840,7 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">DARK<span>SIDE</span></a>
+  <a href="#" class="nav-logo"><img src="DSP_Logo.svg" alt="Darkside Promotions" style="height:28px;width:auto;"></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#event">Event</a></li>
     <li><a href="#about">About</a></li>
@@ -856,11 +857,34 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-bg">
-    <img src="hero-banner.jpg" alt="Darkside Promotions — Mashhadi vs Garcia — April 25, 2026 at Redford Theatre" class="hero-img-desktop">
-    <img src="event-flyer.jpg" alt="Darkside Promotions — Mashhadi vs Garcia — April 25, 2026 at Redford Theatre" class="hero-img-mobile">
-  </div>
   <div class="hero-content">
+    <p class="hero-tag">Detroit's Premier Boxing Promoter</p>
+
+    <!-- LOGO: Upload DSP_Logo.svg to your GitHub repo -->
+    <img src="DSP_Logo.svg" alt="Darkside Promotions" class="hero-logo">
+
+    <p class="hero-sub">Fight Nights &bull; Big Lights &bull; Real Boxing</p>
+    <div class="hero-divider"></div>
+
+    <div class="hero-matchup">
+      <p class="matchup-label">Main Event</p>
+      <div class="matchup-fighters">
+        <div class="matchup-fighter">
+          <p class="matchup-nickname">"Lionheart"</p>
+          <p class="matchup-name">MASHHADI</p>
+          <p class="matchup-record">14-1-0 &bull; 12 KOs</p>
+        </div>
+        <div class="matchup-vs">VS</div>
+        <div class="matchup-fighter">
+          <p class="matchup-nickname">&nbsp;</p>
+          <p class="matchup-name">GARCIA</p>
+          <p class="matchup-record">20-4-1 &bull; 13 KOs</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="hero-event-details"><strong>Saturday, April 25, 2026</strong> &mdash; Redford Theatre &mdash; Doors at 6:00 PM<br>17360 Lahser Rd, Detroit, MI 48219</p>
+
     <div class="countdown-row" id="countdown">
       <div class="countdown-unit">
         <span class="countdown-num" id="cd-days">--</span>
@@ -883,7 +907,7 @@
     <div class="hero-buttons">
       <!-- TICKET LINK: Replace # with your actual ticket URL -->
       <a href="#" class="btn-primary">Get Tickets</a>
-      <a href="#event" class="btn-outline">View Fight Card</a>
+      <a href="#contact" class="btn-outline">Sponsorship</a>
     </div>
   </div>
 </section>
