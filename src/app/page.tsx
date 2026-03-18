@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { getFeaturedEvent, getFighters, getSponsors, getPastEvents, getSiteSettings, urlFor } from '@/lib/sanity';
 import Countdown from '@/components/Countdown';
 import Reveal from '@/components/Reveal';
+import ContactForm from '@/components/ContactForm';
 
 export const revalidate = 60; // Revalidate every 60 seconds
 
@@ -383,13 +384,7 @@ export default async function HomePage() {
                 </div>
               </div>
 
-              <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
-                <input type="text" placeholder="Your Name" className="font-body font-light text-[1rem] bg-[#161616] border border-[#222] text-[#f0ece4] p-3 outline-none focus:border-[#d4182a] transition-colors placeholder:text-[#555] placeholder:font-heading placeholder:font-light placeholder:text-[.8rem] placeholder:tracking-[.1em] placeholder:uppercase" />
-                <input type="email" placeholder="Email Address" className="font-body font-light text-[1rem] bg-[#161616] border border-[#222] text-[#f0ece4] p-3 outline-none focus:border-[#d4182a] transition-colors placeholder:text-[#555] placeholder:font-heading placeholder:font-light placeholder:text-[.8rem] placeholder:tracking-[.1em] placeholder:uppercase" />
-                <input type="text" placeholder="Subject — Fighter Inquiry / Sponsorship / General" className="font-body font-light text-[1rem] bg-[#161616] border border-[#222] text-[#f0ece4] p-3 outline-none focus:border-[#d4182a] transition-colors placeholder:text-[#555] placeholder:font-heading placeholder:font-light placeholder:text-[.8rem] placeholder:tracking-[.1em] placeholder:uppercase" />
-                <textarea placeholder="Message" className="font-body font-light text-[1rem] bg-[#161616] border border-[#222] text-[#f0ece4] p-3 outline-none focus:border-[#d4182a] transition-colors resize-y min-h-[120px] placeholder:text-[#555] placeholder:font-heading placeholder:font-light placeholder:text-[.8rem] placeholder:tracking-[.1em] placeholder:uppercase" />
-                <button type="submit" className="btn-primary w-fit">Send Message</button>
-              </form>
+              <ContactForm />
             </div>
           </Reveal>
         </div>
