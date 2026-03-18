@@ -138,6 +138,18 @@
     object-fit: cover;
     object-position: center center;
   }
+  /* Show wide banner on desktop, portrait flyer on mobile */
+  .hero-bg .hero-img-mobile { display: none; }
+  .hero-bg .hero-img-desktop { display: block; }
+
+  @media (max-width: 768px) {
+    .hero-bg .hero-img-desktop { display: none; }
+    .hero-bg .hero-img-mobile {
+      display: block;
+      object-position: top center;
+    }
+    .hero { padding: 0 1.2rem 2rem; }
+  }
   /* Dark gradient at bottom so text is legible over flyer */
   .hero-bg::after {
     content: '';
@@ -845,7 +857,8 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="hero-banner.jpg" alt="Darkside Promotions — Mashhadi vs Garcia — April 25, 2026 at Redford Theatre">
+    <img src="hero-banner.jpg" alt="Darkside Promotions — Mashhadi vs Garcia — April 25, 2026 at Redford Theatre" class="hero-img-desktop">
+    <img src="event-flyer.jpg" alt="Darkside Promotions — Mashhadi vs Garcia — April 25, 2026 at Redford Theatre" class="hero-img-mobile">
   </div>
   <div class="hero-content">
     <div class="countdown-row" id="countdown">
