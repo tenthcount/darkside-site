@@ -110,47 +110,43 @@
   /* ─── HERO ─── */
   .hero {
     position: relative;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     text-align: center;
-    padding: 6rem 2rem 4rem;
+    padding: 0 2rem 3rem;
     overflow: hidden;
   }
-  .hero::before {
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  /* Dark gradient at bottom so text is legible over flyer */
+  .hero-bg::after {
     content: '';
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(ellipse 60% 50% at 50% 40%, var(--red-glow) 0%, transparent 70%),
-      radial-gradient(circle at 20% 80%, rgba(201,168,76,.08) 0%, transparent 50%),
-      linear-gradient(180deg, var(--black) 0%, #0d0d0d 100%);
-    z-index: 0;
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    top: 0; right: -10%; bottom: 0;
-    width: 50%;
-    background: repeating-linear-gradient(
-      -55deg,
-      transparent,
-      transparent 60px,
-      rgba(212,24,42,.04) 60px,
-      rgba(212,24,42,.04) 62px
-    );
-    z-index: 0;
+      linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0) 40%, rgba(10,10,10,.7) 65%, rgba(10,10,10,.95) 100%);
+    z-index: 1;
   }
 
-  .hero-content { position: relative; z-index: 1; max-width: 900px; }
+  .hero-content { position: relative; z-index: 2; max-width: 900px; }
 
   .hero-tag {
-    font-family: opensans(--font-heading);
-    font-weight: 400;
-    font-size: 1.25rem;
-    letter-spacing: .3em;
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-size: .85rem;
+    letter-spacing: .4em;
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 1.5rem;
@@ -260,9 +256,8 @@
     display: flex;
     gap: 1rem;
     justify-content: center;
-    margin-top: 2rem;
     opacity: 0;
-    animation: fadeUp .8s 1.4s forwards;
+    animation: fadeUp .8s .5s forwards;
   }
 
   .btn-primary {
@@ -303,9 +298,9 @@
     display: flex;
     gap: 1.5rem;
     justify-content: center;
-    margin-top: 1.5rem;
+    margin-bottom: 1.2rem;
     opacity: 0;
-    animation: fadeUp .8s 1.6s forwards;
+    animation: fadeUp .8s .3s forwards;
   }
   .countdown-unit {
     display: flex;
@@ -841,31 +836,10 @@
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg">
+    <img src="event-flyer.jpg" alt="Darkside Promotions — Mashhadi vs Garcia — April 25, 2026 at Redford Theatre">
+  </div>
   <div class="hero-content">
-    <p class="hero-tag">Detroit's Premier Boxing Promoter</p>
-    <h1 class="hero-title">DARK<span class="red">SIDE</span><br>PROMOTIONS</h1>
-    <p class="hero-sub">Fight Nights &bull; Big Lights &bull; Real Boxing</p>
-    <div class="hero-divider"></div>
-
-    <div class="hero-matchup">
-      <p class="matchup-label">Main Event</p>
-      <div class="matchup-fighters">
-        <div class="matchup-fighter">
-          <p class="matchup-nickname">"Lionheart"</p>
-          <p class="matchup-name">MASHHADI</p>
-          <p class="matchup-record">14-1-0 &bull; 12 KOs</p>
-        </div>
-        <div class="matchup-vs">VS</div>
-        <div class="matchup-fighter">
-          <p class="matchup-nickname">&nbsp;</p>
-          <p class="matchup-name">GARCIA</p>
-          <p class="matchup-record">20-4-1 &bull; 13 KOs</p>
-        </div>
-      </div>
-    </div>
-
-    <p class="hero-event-details"><strong>Saturday, April 25, 2026</strong> &mdash; Redford Theatre &mdash; Doors at 6:00 PM<br>17360 Lahser Rd, Detroit, MI 48219</p>
-
     <div class="countdown-row" id="countdown">
       <div class="countdown-unit">
         <span class="countdown-num" id="cd-days">--</span>
@@ -888,7 +862,7 @@
     <div class="hero-buttons">
       <!-- TICKET LINK: Replace # with your actual ticket URL -->
       <a href="#" class="btn-primary">Get Tickets</a>
-      <a href="#contact" class="btn-outline">Sponsorship</a>
+      <a href="#event" class="btn-outline">View Fight Card</a>
     </div>
   </div>
 </section>
