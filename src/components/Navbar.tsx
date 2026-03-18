@@ -4,12 +4,12 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 export default function Navbar() {
-  const [visible, setVisible] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setVisible(window.scrollY > window.innerHeight * 0.6);
+      setScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -17,16 +17,12 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[100] flex justify-between items-center px-8 py-4 transition-all duration-400 ${
-        visible
-          ? 'translate-y-0 opacity-100'
-          : '-translate-y-full opacity-0'
-      }`}
+      className="fixed top-0 left-0 right-0 z-[100] flex justify-between items-center px-8 py-4 transition-all duration-500"
       style={{
-        background: 'rgba(10,10,10,.25)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(255,255,255,.06)',
+        background: scrolled ? 'rgba(10,10,10,.25)' : 'transparent',
+        backdropFilter: scrolled ? 'blur(20px)' : 'none',
+        WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(255,255,255,.06)' : '1px solid transparent',
       }}
     >
       <Link href="/" className="block">
