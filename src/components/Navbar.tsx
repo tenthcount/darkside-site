@@ -46,7 +46,7 @@ export default function Navbar() {
       </ul>
 
       {/* CTA button — fixed width right */}
-      <div className="w-40 shrink-0 hidden md:flex justify-end">
+      <div className="shrink-0 hidden md:flex justify-end">
         <Link href="/#event" className="btn-primary">Get Tickets</Link>
       </div>
 
