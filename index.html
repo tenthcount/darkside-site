@@ -59,6 +59,13 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255,255,255,.06);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform .4s ease, opacity .4s ease;
+  }
+  nav.visible {
+    transform: translateY(0);
+    opacity: 1;
   }
   .nav-logo {
     font-family: var(--font-display);
@@ -1186,6 +1193,17 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Show nav after scrolling past hero
+  const navEl = document.querySelector('nav');
+  const heroEl = document.querySelector('.hero');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > heroEl.offsetHeight * 0.6) {
+      navEl.classList.add('visible');
+    } else {
+      navEl.classList.remove('visible');
+    }
+  });
 </script>
 
 </body>
