@@ -99,8 +99,8 @@ export default async function FighterPage({ params }: { params: { slug: string }
                 <div className="grid grid-cols-3 gap-4 mt-6">
                   {statBoxes.map((stat) => (
                     <div key={stat.label} className="card p-4 text-center aspect-square flex flex-col items-center justify-center">
-                      <div className="font-display text-[1.6rem] text-[#d4182a]">{stat.value}</div>
-                      <div className="font-heading font-light text-[.6rem] tracking-[.15em] uppercase text-[#888] mt-1">{stat.label}</div>
+                      <div className="font-display text-[2.2rem] text-[#d4182a]">{stat.value}</div>
+                      <div className="font-heading font-light text-[.75rem] tracking-[.15em] uppercase text-[#888] mt-2">{stat.label}</div>
                     </div>
                   ))}
                 </div>
