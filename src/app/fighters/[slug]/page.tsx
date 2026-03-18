@@ -95,8 +95,19 @@ export default async function FighterPage({ params }: { params: { slug: string }
                 <p className="font-heading font-light text-[1rem] tracking-[.15em] text-[#c9a84c] uppercase mt-2">&ldquo;{fighter.nickname}&rdquo;</p>
               )}
 
-              {statBoxes.length > 0 && (
-                <div className={`grid ${gridCols} gap-2 mt-4`}>
+              {statBoxes.length > 0 && statBoxes.length <= 3 && (
+                <div className="grid grid-cols-3 gap-4 mt-6">
+                  {statBoxes.map((stat) => (
+                    <div key={stat.label} className="card p-4 text-center aspect-square flex flex-col items-center justify-center">
+                      <div className="font-display text-[1.6rem] text-[#d4182a]">{stat.value}</div>
+                      <div className="font-heading font-light text-[.6rem] tracking-[.15em] uppercase text-[#888] mt-1">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {statBoxes.length >= 4 && (
+                <div className="grid grid-cols-3 gap-2 mt-4">
                   {statBoxes.map((stat) => (
                     <div key={stat.label} className="card p-3 text-center">
                       <div className="font-display text-[1.1rem] text-[#d4182a]">{stat.value}</div>
@@ -145,11 +156,11 @@ export default async function FighterPage({ params }: { params: { slug: string }
           <Reveal>
             <div className="mt-12">
               <h2 className="font-display text-[1.8rem] tracking-[.04em] mb-4">BIOGRAPHY</h2>
-              <div className="font-light text-[1.05rem] text-[#888] leading-[1.8] max-w-none">
+              <div className="font-light text-[1.05rem] text-[#888] leading-[1.8] max-w-none [&>p]:mb-4">
                 {Array.isArray(fighter.bio) ? (
                   <PortableText value={fighter.bio} />
                 ) : (
-                  String(fighter.bio).split('\n').filter(Boolean).map((paragraph: string, i: number) => (
+                  String(fighter.bio).split(/\n\n|\n/).filter(Boolean).map((paragraph: string, i: number) => (
                     <p key={i} className="mb-4">{paragraph}</p>
                   ))
                 )}
