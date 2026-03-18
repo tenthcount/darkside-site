@@ -65,7 +65,7 @@ export default function Navbar() {
 
       {/* CTA button — right side, desktop only */}
       <div className="w-48 shrink-0 hidden md:flex justify-end">
-        <Link href="/#event" className="btn-primary">Get Tickets</Link>
+        <Link href="/#event" className="btn-primary whitespace-nowrap">Get Tickets</Link>
       </div>
 
       {/* Mobile hamburger — right aligned */}
