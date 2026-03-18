@@ -192,7 +192,7 @@ export default async function FighterPage({ params }: { params: { slug: string }
                         {fight.eventName} {fight.date ? `— ${new Date(fight.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}` : ''}
                       </div>
                     </div>
-                    <div className="font-heading font-light text-[.85rem] tracking-[.08em] text-[#d4182a] text-right">{fight.method}</div>
+                    <div className="font-heading font-light text-[.85rem] tracking-[.08em] text-[#c9a84c] text-right">{fight.method}</div>
                   </div>
                 ))}
               </div>
