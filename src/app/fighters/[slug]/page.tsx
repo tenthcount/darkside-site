@@ -199,7 +199,6 @@ export default async function FighterPage({ params }: { params: { slug: string }
             </div>
           </Reveal>
         )}
-        )}
       </div>
     </main>
   );
