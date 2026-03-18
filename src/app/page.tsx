@@ -249,7 +249,6 @@ export default async function HomePage() {
                         {sponsor.name?.slice(0, 4).toUpperCase()}
                       </div>
                     )}
-                    <span className="font-heading font-light text-[.6rem] tracking-[.1em] uppercase text-[#555]">{sponsor.name}</span>
                   </a>
                 ))}
               </div>
