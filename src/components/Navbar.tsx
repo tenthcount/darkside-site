@@ -17,7 +17,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 z-[100] flex justify-between items-center px-8 py-4 transition-all duration-500"
+      className="fixed top-0 left-0 right-0 z-[100] flex items-center px-8 py-4 transition-all duration-500"
       style={{
         background: scrolled ? 'rgba(10,10,10,.25)' : 'transparent',
         backdropFilter: scrolled ? 'blur(20px)' : 'none',
@@ -25,14 +25,18 @@ export default function Navbar() {
         borderBottom: scrolled ? '1px solid rgba(255,255,255,.06)' : '1px solid transparent',
       }}
     >
-      <Link href="/" className="block">
-        <img src="/DSP_Logo.svg" alt="Darkside Promotions" className="h-7 w-auto" />
-      </Link>
+      {/* Logo — fixed width left */}
+      <div className="w-40 shrink-0">
+        <Link href="/" className="block">
+          <img src="/DSP_Logo.svg" alt="Darkside Promotions" className="h-7 w-auto" />
+        </Link>
+      </div>
 
-      <ul className={`font-heading font-light text-[.9rem] tracking-[.15em] uppercase list-none ${
+      {/* Nav links — centered */}
+      <ul className={`font-heading font-light text-[.9rem] tracking-[.15em] uppercase list-none flex-1 ${
         menuOpen
           ? 'flex flex-col absolute top-full left-0 right-0 bg-[rgba(10,10,10,.97)] p-8 gap-6 border-b border-[#222]'
-          : 'hidden md:flex gap-8'
+          : 'hidden md:flex justify-center gap-8'
       }`}>
         <li><Link href="/#event" className="text-[#888] hover:text-[#d4182a] transition-colors" onClick={() => setMenuOpen(false)}>Event</Link></li>
         <li><Link href="/#about" className="text-[#888] hover:text-[#d4182a] transition-colors" onClick={() => setMenuOpen(false)}>About</Link></li>
@@ -41,8 +45,12 @@ export default function Navbar() {
         <li><Link href="/#contact" className="text-[#888] hover:text-[#d4182a] transition-colors" onClick={() => setMenuOpen(false)}>Contact</Link></li>
       </ul>
 
-      <Link href="/#event" className="btn-primary hidden md:inline-block">Get Tickets</Link>
+      {/* CTA button — fixed width right */}
+      <div className="w-40 shrink-0 hidden md:flex justify-end">
+        <Link href="/#event" className="btn-primary">Get Tickets</Link>
+      </div>
 
+      {/* Mobile hamburger */}
       <div className="flex flex-col gap-[5px] cursor-pointer md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
         <span className="w-7 h-[2px] bg-[#f0ece4] transition-all"></span>
         <span className="w-7 h-[2px] bg-[#f0ece4] transition-all"></span>
