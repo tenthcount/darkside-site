@@ -39,7 +39,7 @@ export default function Navbar() {
       }}
     >
       {/* Logo — fixed width left, fades in/out on mobile */}
-      <div className="w-40 shrink-0">
+      <div className="w-48 shrink-0">
         <Link
           href="/"
           className={`block transition-opacity duration-300 ${
@@ -64,7 +64,7 @@ export default function Navbar() {
       </ul>
 
       {/* CTA button — right side, desktop only */}
-      <div className="w-40 shrink-0 hidden md:flex justify-end">
+      <div className="w-48 shrink-0 hidden md:flex justify-end">
         <Link href="/#event" className="btn-primary">Get Tickets</Link>
       </div>
 
