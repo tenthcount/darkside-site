@@ -58,7 +58,6 @@
     background: rgba(10,10,10,.85);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--card-border);
-    transition: background .3s;
   }
   .nav-logo {
     font-family: var(--font-display);
@@ -130,7 +129,6 @@
       linear-gradient(180deg, var(--black) 0%, #0d0d0d 100%);
     z-index: 0;
   }
-  /* Diagonal slash lines */
   .hero::after {
     content: '';
     position: absolute;
@@ -191,33 +189,67 @@
     animation: fadeUp .8s .9s forwards;
   }
 
-  .hero-event {
+  /* ─── MAIN EVENT MATCHUP ─── */
+  .hero-matchup {
     margin-top: .5rem;
     opacity: 0;
-    animation: fadeUp .8s 1.1s forwards;
+    animation: fadeUp .8s 1s forwards;
   }
-  .hero-event-label {
+  .matchup-label {
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-size: .7rem;
+    letter-spacing: .4em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: .8rem;
+  }
+  .matchup-fighters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .matchup-fighter {
+    text-align: center;
+  }
+  .matchup-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    letter-spacing: .04em;
+    line-height: 1;
+  }
+  .matchup-record {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: .9rem;
+    color: var(--gold);
+    margin-top: .2rem;
+  }
+  .matchup-nickname {
     font-family: var(--font-heading);
     font-weight: 300;
     font-size: .75rem;
-    letter-spacing: .3em;
+    letter-spacing: .15em;
+    color: var(--grey);
     text-transform: uppercase;
-    color: var(--grey-dim);
-    margin-bottom: .5rem;
   }
-  .hero-event-name {
+  .matchup-vs {
     font-family: var(--font-display);
-    font-size: clamp(1.6rem, 4vw, 2.8rem);
-    letter-spacing: .06em;
-    color: var(--white);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color: var(--red);
   }
+
   .hero-event-details {
     font-family: var(--font-body);
     font-weight: 300;
     font-size: 1.05rem;
     color: var(--grey);
     letter-spacing: .05em;
-    margin-top: .4rem;
+    margin-top: 1.2rem;
+    opacity: 0;
+    animation: fadeUp .8s 1.2s forwards;
   }
   .hero-event-details strong {
     color: var(--gold);
@@ -228,9 +260,9 @@
     display: flex;
     gap: 1rem;
     justify-content: center;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     opacity: 0;
-    animation: fadeUp .8s 1.3s forwards;
+    animation: fadeUp .8s 1.4s forwards;
   }
 
   .btn-primary {
@@ -271,9 +303,9 @@
     display: flex;
     gap: 1.5rem;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     opacity: 0;
-    animation: fadeUp .8s 1.5s forwards;
+    animation: fadeUp .8s 1.6s forwards;
   }
   .countdown-unit {
     display: flex;
@@ -321,8 +353,85 @@
     margin: 1.5rem 0 2.5rem;
   }
 
+  /* ─── EVENT FLYER SECTION ─── */
+  #event {
+    background: var(--deep);
+  }
+  .event-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .event-flyer {
+    width: 100%;
+    border: 2px solid var(--card-border);
+    transition: border-color .3s;
+  }
+  .event-flyer:hover { border-color: var(--gold); }
+  .event-info-col h3 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    letter-spacing: .04em;
+    margin-bottom: .5rem;
+  }
+  .event-meta {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--grey);
+    margin-bottom: .3rem;
+    line-height: 1.6;
+  }
+  .event-meta strong { color: var(--gold); font-weight: 600; }
+
+  /* Fight card list */
+  .fight-card-list {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+  }
+  .fight-card-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .8rem 1rem;
+    background: var(--card);
+    border-left: 3px solid var(--card-border);
+    transition: border-color .25s;
+  }
+  .fight-card-item:first-child {
+    border-left-color: var(--gold);
+    background: linear-gradient(90deg, rgba(201,168,76,.08), var(--card));
+  }
+  .fight-card-item:hover { border-left-color: var(--red); }
+  .fight-card-item-label {
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-size: .6rem;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--grey-dim);
+  }
+  .fight-card-item-main {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: .95rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .fight-card-item-record {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: .8rem;
+    color: var(--grey);
+    text-align: right;
+    white-space: nowrap;
+  }
+
   /* ─── ABOUT ─── */
-  #about { background: var(--deep); }
+  #about { background: var(--black); }
   .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -372,76 +481,6 @@
     margin-top: .5rem;
   }
 
-  /* ─── EVENTS ─── */
-  #events { background: var(--black); }
-  .events-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.5rem;
-  }
-  .event-card {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    padding: 2rem;
-    position: relative;
-    transition: border-color .3s, transform .3s;
-  }
-  .event-card:hover {
-    border-color: var(--red);
-    transform: translateY(-4px);
-  }
-  .event-card.featured {
-    border-color: var(--gold);
-    background: linear-gradient(135deg, var(--card) 0%, rgba(201,168,76,.06) 100%);
-  }
-  .event-card.featured::after {
-    content: 'NEXT EVENT';
-    position: absolute;
-    top: 0; right: 0;
-    background: var(--gold);
-    color: var(--black);
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: .6rem;
-    letter-spacing: .15em;
-    padding: .35rem .8rem;
-  }
-  .event-date {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    color: var(--red);
-    letter-spacing: .04em;
-  }
-  .event-name {
-    font-family: var(--font-display);
-    font-size: 1.8rem;
-    letter-spacing: .04em;
-    margin: .4rem 0;
-  }
-  .event-venue {
-    font-family: var(--font-body);
-    font-weight: 300;
-    font-size: .95rem;
-    color: var(--grey);
-  }
-  .event-venue strong { color: var(--gold); font-weight: 600; }
-  .event-bouts {
-    display: flex;
-    gap: .5rem;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-  }
-  .bout-tag {
-    font-family: var(--font-heading);
-    font-weight: 400;
-    font-size: .7rem;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    padding: .25rem .6rem;
-    border: 1px solid var(--card-border);
-    color: var(--grey);
-  }
-
   /* ─── FIGHTERS ─── */
   #fighters { background: var(--deep); }
   .fighters-grid {
@@ -459,6 +498,19 @@
     transition: border-color .3s;
   }
   .fighter-card:hover { border-color: var(--red); }
+  .fighter-card.main-event { border-color: var(--gold); }
+  .fighter-card.main-event::after {
+    content: 'MAIN EVENT';
+    position: absolute;
+    top: 0; right: 0;
+    background: var(--gold);
+    color: var(--black);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: .55rem;
+    letter-spacing: .12em;
+    padding: .25rem .6rem;
+  }
   .fighter-icon {
     width: 56px; height: 56px;
     border-radius: 50%;
@@ -478,11 +530,20 @@
     letter-spacing: .08em;
     text-transform: uppercase;
   }
+  .fighter-nickname {
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-size: .7rem;
+    letter-spacing: .1em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-top: .15rem;
+  }
   .fighter-record {
     font-family: var(--font-body);
     font-weight: 300;
     font-size: .85rem;
-    color: var(--gold);
+    color: var(--grey);
     margin-top: .3rem;
   }
   .fighter-weight {
@@ -492,6 +553,102 @@
     color: var(--grey-dim);
     margin-top: .15rem;
   }
+
+  /* ─── SPONSORS ─── */
+  #sponsors { background: var(--black); }
+  .sponsors-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    margin-top: 1rem;
+  }
+  .sponsor-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .4rem;
+  }
+  .sponsor-box {
+    width: 100px; height: 60px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: .7rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--grey);
+    transition: border-color .25s;
+  }
+  .sponsor-box:hover { border-color: var(--gold); }
+  .sponsor-name {
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-size: .6rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--grey-dim);
+  }
+  .sponsors-cta {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+  .sponsors-cta p {
+    font-weight: 300;
+    font-size: .95rem;
+    color: var(--grey);
+    margin-bottom: 1rem;
+  }
+
+  /* ─── PAST EVENTS ─── */
+  #past-events { background: var(--deep); }
+  .past-events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .past-event-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    padding: 1.5rem;
+    transition: border-color .3s;
+  }
+  .past-event-card:hover { border-color: var(--red); }
+  .past-event-date {
+    font-family: var(--font-heading);
+    font-weight: 300;
+    font-size: .7rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+  .past-event-name {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    letter-spacing: .04em;
+    margin: .3rem 0;
+  }
+  .past-event-venue {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: .9rem;
+    color: var(--grey);
+  }
+  .past-event-result {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: .85rem;
+    color: var(--grey-dim);
+    margin-top: .8rem;
+    padding-top: .8rem;
+    border-top: 1px solid var(--card-border);
+  }
+  .past-event-result strong { color: var(--gold); font-weight: 600; }
 
   /* ─── CONTACT ─── */
   #contact { background: var(--black); }
@@ -550,9 +707,7 @@
     outline: none;
     transition: border-color .25s;
   }
-  .contact-form input:focus, .contact-form textarea:focus {
-    border-color: var(--red);
-  }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--red); }
   .contact-form textarea { resize: vertical; min-height: 120px; }
   .contact-form input::placeholder, .contact-form textarea::placeholder {
     color: var(--grey-dim);
@@ -624,7 +779,6 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
-
   .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -653,14 +807,16 @@
     }
     .about-grid { grid-template-columns: 1fr; }
     .contact-grid { grid-template-columns: 1fr; }
+    .event-layout { grid-template-columns: 1fr; }
     .hero-buttons { flex-direction: column; align-items: center; }
     .countdown-row { gap: 1rem; }
-    .events-grid { grid-template-columns: 1fr; }
+    .matchup-fighters { gap: .8rem; }
   }
 
   @media (max-width: 480px) {
     section { padding: 4rem 1.2rem; }
     .fighters-grid { grid-template-columns: repeat(2, 1fr); }
+    .sponsors-row { gap: 1.5rem; }
   }
 </style>
 </head>
@@ -670,12 +826,14 @@
 <nav>
   <a href="#" class="nav-logo">DARK<span>SIDE</span></a>
   <ul class="nav-links" id="navLinks">
+    <li><a href="#event">Event</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#events">Events</a></li>
     <li><a href="#fighters">Fighters</a></li>
+    <li><a href="#sponsors">Sponsors</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#events" class="nav-cta">Get Tickets</a>
+  <!-- TICKET LINK: Replace # with your actual ticket URL (Eventbrite, TicketLeap, etc.) -->
+  <a href="#" class="nav-cta">Get Tickets</a>
   <div class="hamburger" id="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
   </div>
@@ -689,11 +847,24 @@
     <p class="hero-sub">Fight Nights &bull; Big Lights &bull; Real Boxing</p>
     <div class="hero-divider"></div>
 
-    <div class="hero-event">
-      <p class="hero-event-label">Next Event</p>
-      <p class="hero-event-name">DARKSIDE</p>
-      <p class="hero-event-details"><strong>April 25, 2026</strong> &mdash; Redford Theatre, Detroit MI</p>
+    <div class="hero-matchup">
+      <p class="matchup-label">Main Event</p>
+      <div class="matchup-fighters">
+        <div class="matchup-fighter">
+          <p class="matchup-nickname">"Lionheart"</p>
+          <p class="matchup-name">MASHHADI</p>
+          <p class="matchup-record">14-1-0 &bull; 12 KOs</p>
+        </div>
+        <div class="matchup-vs">VS</div>
+        <div class="matchup-fighter">
+          <p class="matchup-nickname">&nbsp;</p>
+          <p class="matchup-name">GARCIA</p>
+          <p class="matchup-record">20-4-1 &bull; 13 KOs</p>
+        </div>
+      </div>
     </div>
+
+    <p class="hero-event-details"><strong>Saturday, April 25, 2026</strong> &mdash; Redford Theatre &mdash; Doors at 6:00 PM<br>17360 Lahser Rd, Detroit, MI 48219</p>
 
     <div class="countdown-row" id="countdown">
       <div class="countdown-unit">
@@ -715,8 +886,78 @@
     </div>
 
     <div class="hero-buttons">
-      <a href="#events" class="btn-primary">Get Tickets</a>
+      <!-- TICKET LINK: Replace # with your actual ticket URL -->
+      <a href="#" class="btn-primary">Get Tickets</a>
       <a href="#contact" class="btn-outline">Sponsorship</a>
+    </div>
+  </div>
+</section>
+
+<!-- EVENT DETAILS + FLYER -->
+<section id="event">
+  <div class="container">
+    <p class="section-tag reveal">Next Event — April 25, 2026</p>
+    <h2 class="section-title reveal">THE YEAR'S BIGGEST DARKSIDE SHOW</h2>
+    <div class="section-divider reveal"></div>
+
+    <div class="event-layout reveal">
+      <!-- FLYER IMAGE: Upload your flyer to GitHub as images/event-flyer.jpg -->
+      <img src="event-flyer.jpg" alt="Darkside Promotions — Mashhadi vs Garcia — April 25, 2026 at Redford Theatre" class="event-flyer">
+
+      <div class="event-info-col">
+        <h3>MASHHADI VS. GARCIA</h3>
+        <p class="event-meta"><strong>Date:</strong> Saturday, April 25, 2026</p>
+        <p class="event-meta"><strong>Doors:</strong> 6:00 PM ET</p>
+        <p class="event-meta"><strong>Venue:</strong> Redford Theatre — 17360 Lahser Rd, Detroit, MI 48219</p>
+
+        <div class="fight-card-list">
+          <div class="fight-card-item">
+            <div>
+              <div class="fight-card-item-label">Main Event</div>
+              <div class="fight-card-item-main">Husam Mashhadi vs. Wister Garcia</div>
+            </div>
+            <div class="fight-card-item-record">14-1 vs 20-4-1</div>
+          </div>
+          <div class="fight-card-item">
+            <div>
+              <div class="fight-card-item-label">Undercard</div>
+              <div class="fight-card-item-main">Gheith Mohammed</div>
+            </div>
+            <div class="fight-card-item-record">TBA</div>
+          </div>
+          <div class="fight-card-item">
+            <div>
+              <div class="fight-card-item-label">Undercard</div>
+              <div class="fight-card-item-main">Sardius Simmons</div>
+            </div>
+            <div class="fight-card-item-record">TBA</div>
+          </div>
+          <div class="fight-card-item">
+            <div>
+              <div class="fight-card-item-label">Undercard</div>
+              <div class="fight-card-item-main">Kahmel Makled</div>
+            </div>
+            <div class="fight-card-item-record">TBA</div>
+          </div>
+          <div class="fight-card-item">
+            <div>
+              <div class="fight-card-item-label">Undercard</div>
+              <div class="fight-card-item-main">Ryan Reed</div>
+            </div>
+            <div class="fight-card-item-record">TBA</div>
+          </div>
+          <div class="fight-card-item">
+            <div>
+              <div class="fight-card-item-label">Undercard</div>
+              <div class="fight-card-item-main">Ali Hamka</div>
+            </div>
+            <div class="fight-card-item-record">TBA</div>
+          </div>
+        </div>
+
+        <!-- TICKET LINK: Replace # with your actual ticket URL -->
+        <a href="#" class="btn-primary" style="margin-top:1.5rem;display:inline-block;">Get Tickets</a>
+      </div>
     </div>
   </div>
 </section>
@@ -753,46 +994,6 @@
   </div>
 </section>
 
-<!-- EVENTS -->
-<section id="events">
-  <div class="container">
-    <p class="section-tag reveal">Fight Schedule</p>
-    <h2 class="section-title reveal">UPCOMING EVENTS</h2>
-    <div class="section-divider reveal"></div>
-
-    <div class="events-grid reveal">
-      <div class="event-card featured">
-        <div class="event-date">APR 25, 2026</div>
-        <div class="event-name">DARKSIDE</div>
-        <div class="event-venue"><strong>Redford Theatre</strong> — Detroit, MI</div>
-        <div class="event-bouts">
-          <span class="bout-tag">Pro Bouts</span>
-          <span class="bout-tag">Amateur</span>
-          <span class="bout-tag">Main Event TBA</span>
-        </div>
-      </div>
-      <div class="event-card">
-        <div class="event-date">JUN 2026</div>
-        <div class="event-name">THE TAKEOVER III</div>
-        <div class="event-venue"><strong>Venue TBA</strong> — Metro Detroit</div>
-        <div class="event-bouts">
-          <span class="bout-tag">Pro Card</span>
-          <span class="bout-tag">Title Fights</span>
-        </div>
-      </div>
-      <div class="event-card">
-        <div class="event-date">SEPT 2026</div>
-        <div class="event-name">SHOWDOWN IN MOTOWN</div>
-        <div class="event-venue"><strong>Venue TBA</strong> — Detroit, MI</div>
-        <div class="event-bouts">
-          <span class="bout-tag">Televised</span>
-          <span class="bout-tag">Casino Show</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FIGHTERS -->
 <section id="fighters">
   <div class="container">
@@ -801,11 +1002,24 @@
     <div class="section-divider reveal"></div>
 
     <div class="fighters-grid reveal">
+      <div class="fighter-card main-event">
+        <div class="fighter-icon">HM</div>
+        <div class="fighter-name">Husam Mashhadi</div>
+        <div class="fighter-nickname">"Lionheart"</div>
+        <div class="fighter-record">14-1-0 &bull; 12 KOs</div>
+        <div class="fighter-weight">Middleweight</div>
+      </div>
       <div class="fighter-card">
-        <div class="fighter-icon">HA</div>
-        <div class="fighter-name">Husam Al-Mashhadi</div>
-        <div class="fighter-record">Undefeated</div>
-        <div class="fighter-weight">Middleweight — 160 lbs</div>
+        <div class="fighter-icon">GM</div>
+        <div class="fighter-name">Gheith Mohammed</div>
+        <div class="fighter-record">Pro Debut</div>
+        <div class="fighter-weight">TBA</div>
+      </div>
+      <div class="fighter-card">
+        <div class="fighter-icon">SS</div>
+        <div class="fighter-name">Sardius Simmons</div>
+        <div class="fighter-record">Undercard</div>
+        <div class="fighter-weight">TBA</div>
       </div>
       <div class="fighter-card">
         <div class="fighter-icon">KM</div>
@@ -814,22 +1028,89 @@
         <div class="fighter-weight">Light Heavyweight — 175 lbs</div>
       </div>
       <div class="fighter-card">
-        <div class="fighter-icon">DK</div>
-        <div class="fighter-name">Davontae Kirk</div>
-        <div class="fighter-record">Rising Prospect</div>
-        <div class="fighter-weight">Middleweight</div>
-      </div>
-      <div class="fighter-card">
         <div class="fighter-icon">RR</div>
         <div class="fighter-name">Ryan Reed</div>
         <div class="fighter-record">Crowd Favorite</div>
         <div class="fighter-weight">Welterweight</div>
       </div>
       <div class="fighter-card">
-        <div class="fighter-icon">AR</div>
-        <div class="fighter-name">Ali Rahal</div>
-        <div class="fighter-record">First Round Finisher</div>
-        <div class="fighter-weight">Light Heavyweight — 175 lbs</div>
+        <div class="fighter-icon">AH</div>
+        <div class="fighter-name">Ali Hamka</div>
+        <div class="fighter-record">Undercard</div>
+        <div class="fighter-weight">TBA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPONSORS -->
+<section id="sponsors">
+  <div class="container">
+    <p class="section-tag reveal">Partners</p>
+    <h2 class="section-title reveal">OUR SPONSORS</h2>
+    <div class="section-divider reveal"></div>
+
+    <!-- SPONSOR LOGOS: Replace the text boxes with <img> tags when you have logo files -->
+    <!-- Example: <img src="images/sponsor-ke.png" alt="KE Entertainment" class="sponsor-box"> -->
+    <div class="sponsors-row reveal">
+      <div class="sponsor-item">
+        <div class="sponsor-box">KE</div>
+        <span class="sponsor-name">KE Entertainment</span>
+      </div>
+      <div class="sponsor-item">
+        <div class="sponsor-box">BELUE</div>
+        <span class="sponsor-name">Belue Fight Night</span>
+      </div>
+      <div class="sponsor-item">
+        <div class="sponsor-box">LIFE</div>
+        <span class="sponsor-name">Life Medical Center</span>
+      </div>
+      <div class="sponsor-item">
+        <div class="sponsor-box">RT</div>
+        <span class="sponsor-name">Redford Theatre</span>
+      </div>
+      <div class="sponsor-item">
+        <div class="sponsor-box">RC</div>
+        <span class="sponsor-name">RC Entertainment</span>
+      </div>
+      <div class="sponsor-item">
+        <div class="sponsor-box">STB</div>
+        <span class="sponsor-name">STB</span>
+      </div>
+    </div>
+
+    <div class="sponsors-cta reveal">
+      <p>Want your brand ringside? Darkside events draw passionate, engaged audiences across Metro Detroit.</p>
+      <a href="#contact" class="btn-outline">Become a Sponsor</a>
+    </div>
+  </div>
+</section>
+
+<!-- PAST EVENTS -->
+<section id="past-events">
+  <div class="container">
+    <p class="section-tag reveal">Track Record</p>
+    <h2 class="section-title reveal">PAST EVENTS</h2>
+    <div class="section-divider reveal"></div>
+
+    <div class="past-events-grid reveal">
+      <div class="past-event-card">
+        <div class="past-event-date">April 18, 2025</div>
+        <div class="past-event-name">THE TAKEOVER</div>
+        <div class="past-event-venue">Hype Athletics — Dearborn Heights, MI</div>
+        <div class="past-event-result"><strong>Main Event:</strong> Husam Al-Mashhadi def. Chris Howard — Unanimous Decision</div>
+      </div>
+      <div class="past-event-card">
+        <div class="past-event-date">2024</div>
+        <div class="past-event-name">DARKSIDE AT HARMONIE CLUB</div>
+        <div class="past-event-venue">Harmonie Club — Detroit, MI</div>
+        <div class="past-event-result"><strong>Main Event:</strong> Husam Al-Mashhadi def. Nicholas Givan</div>
+      </div>
+      <div class="past-event-card">
+        <div class="past-event-date">2013</div>
+        <div class="past-event-name">SHOWDOWN IN MOTOWN</div>
+        <div class="past-event-venue">Masonic Temple — Detroit, MI</div>
+        <div class="past-event-result"><strong>Headline:</strong> 10-bout card featuring Juan Goode & Lane Staal</div>
       </div>
     </div>
   </div>
@@ -856,8 +1137,9 @@
         <div class="contact-detail">
           <div class="contact-detail-icon">📧</div>
           <div class="contact-detail-text">
+            <!-- EMAIL: Replace with your real email -->
             <strong>Email</strong>
-            info@darksidepromotions.com
+            info@darksidepromos.com
           </div>
         </div>
         <div class="contact-detail">
@@ -871,6 +1153,7 @@
         <div class="socials-bar">
           <a href="https://www.instagram.com/darkside_promotions/" target="_blank" class="social-link">IG</a>
           <a href="https://www.facebook.com/officialdarksidepromos/" target="_blank" class="social-link">FB</a>
+          <!-- SOCIALS: Replace # with your real YouTube and X/Twitter URLs -->
           <a href="#" class="social-link">YT</a>
           <a href="#" class="social-link">X</a>
         </div>
@@ -891,16 +1174,16 @@
 <footer>
   <div class="footer-copy">&copy; 2026 <span>DARKSIDE</span> PROMOTIONS &mdash; Detroit, Michigan</div>
   <ul class="footer-links">
+    <li><a href="#event">Event</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#events">Events</a></li>
     <li><a href="#fighters">Fighters</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </footer>
 
 <script>
-  // Countdown to April 25, 2026
-  const target = new Date('2026-04-25T19:00:00-04:00').getTime();
+  // Countdown to April 25, 2026 — Doors at 6PM ET
+  const target = new Date('2026-04-25T18:00:00-04:00').getTime();
   function updateCountdown() {
     const now = Date.now();
     const diff = target - now;
