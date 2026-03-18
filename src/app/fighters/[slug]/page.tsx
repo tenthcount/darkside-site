@@ -176,23 +176,29 @@ export default async function FighterPage({ params }: { params: { slug: string }
               <h2 className="font-display text-[1.8rem] tracking-[.04em] mb-4">FIGHT HISTORY</h2>
               <div className="flex flex-col gap-2">
                 {fighter.fights.map((fight: any, i: number) => (
-                  <div key={i} className={`card p-4 flex justify-between items-center ${
-                    fight.result === 'W' ? 'border-l-[3px] border-l-green-600' :
+                  <div key={i} className={`card p-4 flex justify-between items-center transition-all duration-300 hover:bg-[#1a1a1a] hover:border-[#333] cursor-default ${
+                    fight.result === 'W' ? 'border-l-[3px] border-l-[#c9a84c]' :
                     fight.result === 'L' ? 'border-l-[3px] border-l-[#d4182a]' :
                     'border-l-[3px] border-l-[#555]'
                   }`}>
                     <div>
                       <div className="font-heading font-bold text-[.9rem] tracking-[.06em] uppercase">
-                        {fight.result === 'W' ? '✓' : fight.result === 'L' ? '✗' : '—'} vs. {fight.opponent}
+                        <span className={fight.result === 'W' ? 'text-[#c9a84c]' : fight.result === 'L' ? 'text-[#d4182a]' : 'text-[#555]'}>
+                          {fight.result === 'W' ? '✓' : fight.result === 'L' ? '✗' : '—'}
+                        </span>
+                        {' '}vs. {fight.opponent}
                       </div>
-                      <div className="font-body font-light text-[.8rem] text-[#555]">{fight.eventName} {fight.date ? `— ${new Date(fight.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}` : ''}</div>
+                      <div className="font-heading font-light text-[.75rem] tracking-[.05em] text-[#555] mt-1">
+                        {fight.eventName} {fight.date ? `— ${new Date(fight.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}` : ''}
+                      </div>
                     </div>
-                    <div className="font-body font-light text-[.8rem] text-[#888] text-right">{fight.method}</div>
+                    <div className="font-heading font-light text-[.85rem] tracking-[.08em] text-[#d4182a] text-right">{fight.method}</div>
                   </div>
                 ))}
               </div>
             </div>
           </Reveal>
+        )}
         )}
       </div>
     </main>
