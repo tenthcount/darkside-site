@@ -5,10 +5,15 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const revalidate = 60;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  const fighters = await getFighters();
-  return fighters?.map((f: any) => ({ slug: f.slug?.current })).filter(Boolean) || [];
+  try {
+    const fighters = await getFighters();
+    return fighters?.map((f: any) => ({ slug: f.slug?.current })).filter(Boolean) || [];
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
@@ -54,10 +59,9 @@ export default async function FighterPage({ params }: { params: { slug: string }
   }
 
   // Determine grid columns based on number of stat boxes
-  const gridCols = statBoxes.length <= 3 ? 'grid-cols-3' :
-    statBoxes.length === 4 ? 'grid-cols-2 sm:grid-cols-4' :
-    statBoxes.length === 5 ? 'grid-cols-3 sm:grid-cols-5' :
-    'grid-cols-3 sm:grid-cols-6';
+  // 3 or less: single row of 3
+  // 4 or more: 2 rows of 3 (3-column grid)
+  const gridCols = 'grid-cols-3';
 
   return (
     <main className="min-h-screen pt-32 pb-24 px-8 bg-[#0a0a0a]">
