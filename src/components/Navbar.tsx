@@ -25,9 +25,9 @@ export default function Navbar() {
         borderBottom: scrolled ? '1px solid rgba(255,255,255,.06)' : '1px solid transparent',
       }}
     >
-      {/* Logo — fixed width left */}
+      {/* Logo — hidden on mobile until scrolled */}
       <div className="w-40 shrink-0">
-        <Link href="/" className="block">
+        <Link href="/" className={`block ${!scrolled ? 'hidden md:block' : ''}`}>
           <img src="/DSP_Logo.svg" alt="Darkside Promotions" className="h-7 w-auto" />
         </Link>
       </div>
