@@ -17,31 +17,6 @@ export function urlFor(source: SanityImageSource) {
 
 // ─── QUERIES ───
 
-export async function getEvents() {
-  return client.fetch(`
-    *[_type == "event"] | order(date desc) {
-      _id,
-      name,
-      slug,
-      date,
-      doorsOpen,
-      venue,
-      address,
-      ticketLink,
-      flyer,
-      banner,
-      featured,
-      fightCard[] {
-        label,
-        fighterA,
-        fighterB,
-        records,
-        isMainEvent
-      }
-    }
-  `);
-}
-
 export async function getFeaturedEvent() {
   return client.fetch(`
     *[_type == "event" && featured == true][0] {
@@ -67,6 +42,45 @@ export async function getFeaturedEvent() {
   `);
 }
 
+export async function getEvents() {
+  return client.fetch(`
+    *[_type == "event"] | order(date desc) {
+      _id,
+      name,
+      slug,
+      date,
+      doorsOpen,
+      venue,
+      address,
+      ticketLink,
+      flyer,
+      featured,
+      fightCard[] {
+        label,
+        fighterA,
+        fighterB,
+        records,
+        isMainEvent
+      }
+    }
+  `);
+}
+
+export async function getPastEvents() {
+  return client.fetch(`
+    *[_type == "event" && featured != true] | order(date desc) {
+      _id,
+      name,
+      slug,
+      date,
+      venue,
+      address,
+      mainEventResult,
+      flyer
+    }
+  `);
+}
+
 export async function getFighters() {
   return client.fetch(`
     *[_type == "fighter"] | order(orderRank asc) {
@@ -77,7 +91,11 @@ export async function getFighters() {
       photo,
       record,
       weightClass,
+      weight,
       knockouts,
+      age,
+      height,
+      reach,
       bio,
       isMainEvent,
       socialLinks
@@ -95,7 +113,11 @@ export async function getFighter(slug: string) {
       photo,
       record,
       weightClass,
+      weight,
       knockouts,
+      age,
+      height,
+      reach,
       bio,
       isMainEvent,
       socialLinks,
@@ -150,21 +172,6 @@ export async function getSiteSettings() {
       socialFacebook,
       socialYoutube,
       socialX
-    }
-  `);
-}
-
-export async function getPastEvents() {
-  return client.fetch(`
-    *[_type == "event" && featured != true] | order(date desc) {
-      _id,
-      name,
-      slug,
-      date,
-      venue,
-      address,
-      mainEventResult,
-      flyer
     }
   `);
 }
