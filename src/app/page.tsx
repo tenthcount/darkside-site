@@ -5,6 +5,7 @@ import Countdown from '@/components/Countdown';
 import Reveal from '@/components/Reveal';
 import ContactForm from '@/components/ContactForm';
 import { PortableText } from '@portabletext/react';
+import EventGallery from '@/components/EventGallery';
 
 export const revalidate = 60;
 
@@ -130,9 +131,14 @@ export default async function HomePage() {
             <Reveal><div className="section-divider" /></Reveal>
             <Reveal>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-                {event.flyer && (
-                  <img src={urlFor(event.flyer).width(800).url()} alt={event.name} className="w-full border-2 border-[#222] hover:border-[#c9a84c] transition-colors" />
-                )}
+                <div>
+                  {event.flyer && (
+                    <img src={urlFor(event.flyer).width(800).url()} alt={event.name} className="w-full border-2 border-[#222] hover:border-[#c9a84c] transition-colors" />
+                  )}
+                  {event.gallery && event.gallery.length > 0 && (
+                    <EventGallery images={event.gallery} urlFor={urlFor} />
+                  )}
+                </div>
                 <div>
                   <h3 className="font-display text-[2rem] tracking-[.04em] mb-2">
                     {mainFight ? `${mainFight.fighterA} VS. ${mainFight.fighterB}` : event.name}
