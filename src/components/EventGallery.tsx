@@ -1,46 +1,43 @@
 'use client';
-
 import { useState } from 'react';
 
 interface EventGalleryProps {
-  images: any[];
-  urlFor: (source: any) => any;
+  images: string[];
+  fullImages: string[];
 }
 
-export default function EventGallery({ images, urlFor }: EventGalleryProps) {
+export default function EventGallery({ images, fullImages }: EventGalleryProps) {
   const [lightbox, setLightbox] = useState<string | null>(null);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  const allUrls = images.map((img: any) => urlFor(img).width(1400).url());
-
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
-    setLightbox(allUrls[index]);
+    setLightbox(fullImages[index]);
   };
 
   const next = () => {
-    const newIndex = (lightboxIndex + 1) % allUrls.length;
+    const newIndex = (lightboxIndex + 1) % fullImages.length;
     setLightboxIndex(newIndex);
-    setLightbox(allUrls[newIndex]);
+    setLightbox(fullImages[newIndex]);
   };
 
   const prev = () => {
-    const newIndex = (lightboxIndex - 1 + allUrls.length) % allUrls.length;
+    const newIndex = (lightboxIndex - 1 + fullImages.length) % fullImages.length;
     setLightboxIndex(newIndex);
-    setLightbox(allUrls[newIndex]);
+    setLightbox(fullImages[newIndex]);
   };
 
   return (
     <>
       <div className="grid grid-cols-2 gap-2 mt-2">
-        {images.map((img: any, i: number) => (
+        {images.map((url, i) => (
           <div
             key={i}
             className="cursor-pointer overflow-hidden border border-[#222] hover:border-[#c9a84c] transition-colors"
             onClick={() => openLightbox(i)}
           >
             <img
-              src={urlFor(img).width(400).height(300).url()}
+              src={url}
               alt={`Event photo ${i + 1}`}
               className="w-full h-[120px] object-cover hover:scale-105 transition-transform duration-500"
             />
@@ -53,28 +50,18 @@ export default function EventGallery({ images, urlFor }: EventGalleryProps) {
           <button
             className="absolute left-4 top-1/2 -translate-y-1/2 font-display text-[2.5rem] text-[#888] hover:text-[#f0ece4] transition-colors z-10"
             onClick={(e) => { e.stopPropagation(); prev(); }}
-          >
-            ‹
-          </button>
-
+          >‹</button>
           <img src={lightbox} alt="Gallery" className="max-w-full max-h-[85vh] object-contain" />
-
           <button
             className="absolute right-4 top-1/2 -translate-y-1/2 font-display text-[2.5rem] text-[#888] hover:text-[#f0ece4] transition-colors z-10"
             onClick={(e) => { e.stopPropagation(); next(); }}
-          >
-            ›
-          </button>
-
+          >›</button>
           <button
             className="absolute top-4 right-6 font-display text-[2rem] text-[#888] hover:text-[#d4182a] transition-colors"
             onClick={() => setLightbox(null)}
-          >
-            ✕
-          </button>
-
+          >✕</button>
           <div className="absolute bottom-4 font-heading font-light text-[.7rem] tracking-[.2em] text-[#555]">
-            {lightboxIndex + 1} / {allUrls.length}
+            {lightboxIndex + 1} / {fullImages.length}
           </div>
         </div>
       )}
