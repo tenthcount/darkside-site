@@ -32,16 +32,19 @@ export default function EventGallery({ images, fullImages }: EventGalleryProps) 
       <div className="grid grid-cols-2 gap-2 mt-2">
         {images.map((url, i) => (
           <div
-            key={i}
-            className="cursor-pointer overflow-hidden border border-[#222] hover:border-[#c9a84c] transition-colors"
-            onClick={() => openLightbox(i)}
-          >
-            <img
-              src={url}
-              alt={`Event photo ${i + 1}`}
-              className="w-full h-[120px] object-cover hover:scale-105 transition-transform duration-500"
-            />
-          </div>
+  key={i}
+  className="cursor-pointer overflow-hidden border border-[#222] hover:border-[#c9a84c] transition-colors relative aspect-square group"
+  onClick={() => openLightbox(i)}
+>
+  <img
+    src={url}
+    alt={`Event photo ${i + 1}`}
+    className="w-full h-full object-cover brightness-50 group-hover:brightness-75 group-hover:scale-105 transition-all duration-500"
+  />
+  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    <span className="font-heading font-light text-[.65rem] tracking-[.25em] uppercase text-[#f0ece4]">View</span>
+  </div>
+</div>
         ))}
       </div>
 
