@@ -32,17 +32,28 @@ export default async function HomePage() {
     <>
       {/* ─── HERO ─── */}
       <section className="relative min-h-screen flex flex-col justify-center items-center text-center px-8 py-24 overflow-hidden">
-        <div className="absolute inset-0 z-0" style={{
+        {/* Background video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0 opacity-30"
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay + red glow effects on top of video */}
+        <div className="absolute inset-0 z-[1]" style={{
           background: `
             radial-gradient(ellipse 60% 50% at 50% 40%, rgba(212,24,42,.35) 0%, transparent 70%),
             radial-gradient(circle at 20% 80%, rgba(201,168,76,.08) 0%, transparent 50%),
-            linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%)
+            linear-gradient(180deg, rgba(10,10,10,.7) 0%, rgba(10,10,10,.85) 100%)
           `
         }} />
-        <div className="absolute top-0 -right-[10%] bottom-0 w-1/2 z-0" style={{
+        {/* Diagonal slashes */}
+        <div className="absolute top-0 -right-[10%] bottom-0 w-1/2 z-[1]" style={{
           background: `repeating-linear-gradient(-55deg, transparent, transparent 60px, rgba(212,24,42,.04) 60px, rgba(212,24,42,.04) 62px)`
         }} />
-
         <div className="relative z-10 max-w-[900px]">
           {settings?.heroSubline && (
             <p className="font-heading font-light text-[.85rem] tracking-[.4em] uppercase text-[#f0ece4] mb-6 opacity-0 animate-[fadeUp_.8s_.2s_forwards]">
