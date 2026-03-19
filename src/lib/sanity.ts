@@ -30,7 +30,7 @@ export async function getFeaturedEvent() {
       ticketLink,
       flyer,
       banner,
-      gallery,
+      gallery[]{ ..., asset-> },
       featured,
       fightCard[] {
         label,
