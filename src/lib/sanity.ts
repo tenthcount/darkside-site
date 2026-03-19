@@ -30,8 +30,8 @@ export async function getFeaturedEvent() {
       ticketLink,
       flyer,
       banner,
-      featured,
       gallery,
+      featured,
       fightCard[] {
         label,
         fighterA,
@@ -56,7 +56,6 @@ export async function getEvents() {
       ticketLink,
       flyer,
       featured,
-      gallery,
       fightCard[] {
         label,
         fighterA,
