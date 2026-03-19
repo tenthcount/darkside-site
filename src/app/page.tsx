@@ -54,7 +54,7 @@ export default async function HomePage() {
         <div className="absolute top-0 -right-[10%] bottom-0 w-1/2 z-[1]" style={{
           background: `repeating-linear-gradient(-55deg, transparent, transparent 60px, rgba(212,24,42,.04) 60px, rgba(212,24,42,.04) 62px)`
         }} />
-        <div className="relative z-10 max-w-[900px]">
+        <div className="relative z-[2] max-w-[900px]">
           {settings?.heroSubline && (
             <p className="font-heading font-light text-[.85rem] tracking-[.4em] uppercase text-[#f0ece4] mb-6 opacity-0 animate-[fadeUp_.8s_.2s_forwards]">
               {settings.heroSubline}
