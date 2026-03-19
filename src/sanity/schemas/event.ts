@@ -51,13 +51,6 @@ export default {
       description: '4:5 ratio, main event poster',
     },
     {
-      name: 'banner',
-      title: 'Event Banner (Landscape)',
-      type: 'image',
-      options: { hotspot: true },
-      description: '16:9 ratio, used for desktop hero and social sharing',
-    },
-    {
       name: 'gallery',
       title: 'Event Gallery',
       type: 'array',
