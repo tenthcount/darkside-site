@@ -99,18 +99,3 @@ export default {
     select: { title: 'name', subtitle: 'venue', media: 'flyer' },
   },
 };
-```
-
-**2. Update `src/lib/sanity.ts`** — add `gallery` to the getFeaturedEvent query. Find:
-```
-      flyer,
-      banner,
-      featured,
-```
-
-Change to:
-```
-      flyer,
-      banner,
-      gallery,
-      featured,
