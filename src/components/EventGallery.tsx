@@ -81,27 +81,3 @@ export default function EventGallery({ images, urlFor }: EventGalleryProps) {
     </>
   );
 }
-```
-
-**4. Update the event section in `src/app/page.tsx`** — add import at the top:
-```
-import EventGallery from '@/components/EventGallery';
-```
-
-Then find the flyer image in the event section:
-```
-                {event.flyer && (
-                  <img src={urlFor(event.flyer).width(800).url()} alt={event.name} className="w-full border-2 border-[#222] hover:border-[#c9a84c] transition-colors" />
-                )}
-```
-
-Replace with:
-```
-                <div>
-                  {event.flyer && (
-                    <img src={urlFor(event.flyer).width(800).url()} alt={event.name} className="w-full border-2 border-[#222] hover:border-[#c9a84c] transition-colors" />
-                  )}
-                  {event.gallery && event.gallery.length > 0 && (
-                    <EventGallery images={event.gallery} urlFor={urlFor} />
-                  )}
-                </div>
