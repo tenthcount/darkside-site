@@ -48,7 +48,7 @@ export default {
       title: 'Event Flyer (Portrait)',
       type: 'image',
       options: { hotspot: true },
-      description: '4:5 ratio, used in event section and mobile hero',
+      description: '4:5 ratio, main event poster',
     },
     {
       name: 'banner',
@@ -56,6 +56,13 @@ export default {
       type: 'image',
       options: { hotspot: true },
       description: '16:9 ratio, used for desktop hero and social sharing',
+    },
+    {
+      name: 'gallery',
+      title: 'Event Gallery',
+      type: 'array',
+      of: [{ type: 'image', options: { hotspot: true } }],
+      description: 'Additional event images — weigh-ins, behind the scenes, alternate posters, etc.',
     },
     {
       name: 'featured',
@@ -92,3 +99,18 @@ export default {
     select: { title: 'name', subtitle: 'venue', media: 'flyer' },
   },
 };
+```
+
+**2. Update `src/lib/sanity.ts`** — add `gallery` to the getFeaturedEvent query. Find:
+```
+      flyer,
+      banner,
+      featured,
+```
+
+Change to:
+```
+      flyer,
+      banner,
+      gallery,
+      featured,
