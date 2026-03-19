@@ -136,7 +136,7 @@ export default async function HomePage() {
                     <img src={urlFor(event.flyer).width(800).url()} alt={event.name} className="w-full border-2 border-[#222] hover:border-[#c9a84c] transition-colors" />
                   )}
                   {event.gallery && event.gallery.length > 0 && (
-                    <EventGallery images={event.gallery} urlFor={urlFor} />
+                    <EventGallery images={event.gallery.map((img: any) => urlFor(img).width(400).height(300).url())} fullImages={event.gallery.map((img: any) => urlFor(img).width(1400).url())} />
                   )}
                 </div>
                 <div>
